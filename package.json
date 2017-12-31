@@ -1,0 +1,29 @@
+{
+    "description": "Examples for the allegiant framework.",
+    "author": "echopoint <echopoint@tutanota.com>",
+    "contributors": [],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/allegiant-js/examples/issues"
+    },
+    "homepage": "https://github.com/allegiant-js/examples#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/allegiant-js/examples.git"
+    },
+    "engine": {
+        "node": "> 7.6"
+    },
+    "scripts": {
+        "small": "node small.js",
+        "basic": "node basic.js",
+        "sessions": "node sessions.js"
+    },
+    "dependencies": {
+        "@allegiant/cmdhelper": "0.0.1",
+        "@allegiant/core": "0.0.7",
+        "@allegiant/logfile": "^0.2.1",
+        "@allegiant/sessions": "0.0.5",
+        "@allegiant/shutdown": "^0.2.1"
+    }
+}
