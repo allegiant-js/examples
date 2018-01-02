@@ -1,9 +1,15 @@
+/*
+Generating certs using openssl:
+
+openssl genrsa -out certs/privatekey.pem 4096
+openssl req -new -key certs/privatekey.pem -out certs/certrequest.csr -subj "/C=US/ST=California/L=LA/O=ACME Inc/CN=yourdomainname"
+openssl x509 -req -in certs/certrequest.csr -signkey certs/privatekey.pem -out certs/certificate.pem
+*/
+
 const fs = require('fs');
 const path = require('path');
 
-const LogFile = require('@allegiant/logfile').LogFile;
-const expect = require('@allegiant/common').expect;
-
+const { LogFile } = require('@allegiant/logfile');
 const App = require('@allegiant/core');
 
 const certPath = path.resolve(path.join(process.cwd(), 'certs'));
@@ -24,7 +30,7 @@ require('@allegiant/shutdown')(shutdown);
 function shutdown(req=false, finished) {
     console.log("Shutting down...: ", req); // eslint-disable-line
 
-    if (expect(logger, false)) {
+    if (typeof logger !== 'undefined' && logger !== null) {
         console.log("Closing log..."); // eslint-disable-line
         logger.on('finish', function() {
             console.log("Logging completed"); // eslint-disable-line

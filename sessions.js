@@ -1,9 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
-const LogFile = require('@allegiant/logfile').LogFile;
-const expect = require('@allegiant/common').expect;
-
+const { LogFile } = require('@allegiant/logfile');
 const App = require('@allegiant/core');
 
 const certPath = path.resolve(path.join(process.cwd(), 'certs'));
@@ -24,7 +21,7 @@ require('@allegiant/shutdown')(shutdown);
 function shutdown(req=false, finished) {
     console.log("Shutting down...: ", req); // eslint-disable-line
 
-    if (expect(logger, false)) {
+    if (typeof logger !== 'undefined' && logger !== null) {
         console.log("Closing log..."); // eslint-disable-line
         logger.on('finish', function() {
             console.log("Logging completed"); // eslint-disable-line
@@ -44,12 +41,16 @@ var server = App.create(SETTINGS.host, { // app config
         enabled: true,
         name: 'SESS',
         secure: false,
+        autogen: true,
         path: path.resolve(path.join(process.cwd(), 'sessions')),
     }    
 });
 
 server.get('/', function() {
-    this.content = "<h1>It just works!</h1>";
+    if (!this.session.get('firstVisit'))
+        this.session.set('firstVisit', new Date());
+
+    this.content = `<h1>It just works! You first looked at this content on ${this.session.get('firstVisit')}</h1>`;
     return 200;
 });
 

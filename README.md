@@ -1,6 +1,6 @@
 # examples
 
-> Exmaples for the allegiant app framework.
+> Examples for the allegiant app framework.
 >> There be 🐲 here! The API and functionality are being cemented, anything before a 1.0.0 release is subject to change.
 
 [![Build Status](https://travis-ci.org/allegiant-js/examples.svg?branch=master)](https://travis-ci.org/allegiant-js/examples.svg?branch=master)
@@ -28,6 +28,8 @@ npm run small
 npm run basic
 npm run sessions
 ```
+
+Keep in mind that any examples will require you to generate an ssl cert to use, before you can access them via ssl.
 
 ### Copyright & License
 

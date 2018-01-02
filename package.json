@@ -22,12 +22,12 @@
     },
     "dependencies": {
         "@allegiant/cmdhelper": "0.0.1",
-        "@allegiant/core": "0.0.7",
+        "@allegiant/core": "0.0.9",
         "@allegiant/logfile": "^0.2.1",
-        "@allegiant/sessions": "0.0.5",
+        "@allegiant/sessions": "0.0.8",
         "@allegiant/shutdown": "^0.2.1"
     },
     "devDependencies": {
         "eslint": "^4.11.0"
-	}
+    }
 }
